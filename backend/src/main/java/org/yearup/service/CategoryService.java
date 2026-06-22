@@ -27,9 +27,12 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    public Category update(int categoryId, Category category) {
-        // update category and return the updated category
-        return null;
+    public Optional<Category> update(int categoryId, Category updatedCategory) {
+        return categoryRepository.findById(categoryId).map(newCategory -> {
+            newCategory.setName(updatedCategory.getName());
+            newCategory.setDescription(updatedCategory.getDescription());
+            return categoryRepository.save(newCategory);
+        });
     }
 
     public void delete(int categoryId) {
