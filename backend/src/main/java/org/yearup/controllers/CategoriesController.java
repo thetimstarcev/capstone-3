@@ -38,12 +38,9 @@ public class CategoriesController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // the url to return all products in category 1 would look like this
-    // https://localhost:8080/categories/1/products
     @GetMapping("/{categoryId}/products")
-    public List<Product> getProductsById(@PathVariable int categoryId) {
-        // get a list of product by categoryId
-        return null;
+    public List<Product> getProductsByCategoryId(@PathVariable int categoryId) {
+        return productService.listByCategoryId(categoryId);
     }
 
     // add annotation to call this method for a POST action
