@@ -36,6 +36,6 @@ public class CategoryService {
     }
 
     public void delete(int categoryId) {
-        // delete category
+        categoryRepository.deleteById(categoryId);
     }
 }
