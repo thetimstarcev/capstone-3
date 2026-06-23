@@ -37,9 +37,8 @@ public class ShoppingCartService {
         return cart;
     }
 
-    // add additional methods here
-    public ShoppingCart addProduct(int userId, int productId){
-        CartItem item = shoppingCartRepository.findByUserIdAndProductId(userId,productId);
+    public ShoppingCart addProduct(int userId, int productId) {
+        CartItem item = shoppingCartRepository.findByUserIdAndProductId(userId, productId);
         if (item != null) {
             int quantity = item.getQuantity();
             quantity++;
@@ -54,4 +53,12 @@ public class ShoppingCartService {
         }
         return getByUserId(userId);
     }
+
+    public ShoppingCart updateProduct(int userId, int productId, int quantity) {
+        CartItem item = shoppingCartRepository.findByUserIdAndProductId(userId, productId);
+        item.setQuantity(quantity);
+        shoppingCartRepository.save(item);
+        return getByUserId(userId);
+    }
+
 }

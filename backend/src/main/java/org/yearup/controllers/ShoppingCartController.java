@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.yearup.models.ShoppingCart;
+import org.yearup.models.ShoppingCartItem;
 import org.yearup.models.User;
 import org.yearup.service.ShoppingCartService;
 import org.yearup.service.UserService;
@@ -50,10 +51,15 @@ public class ShoppingCartController {
     // add a PUT method to update an existing product in the cart - the url should be
     // https://localhost:8080/cart/products/15  (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
-    //TODO @PutMapping("/products/{id}")
-    //TODO public ResponseEntity<ShoppingCart> updateProduct(Principal principal,@)
-
-
+    @PutMapping("/products/{id}")
+    public ResponseEntity<ShoppingCart> updateProduct(Principal principal, @PathVariable int id, @RequestBody ShoppingCartItem item) {
+        String userName = principal.getName();
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();
+        int quantity = item.getQuantity();
+        ShoppingCart cart = shoppingCartService.updateProduct(userId,id,quantity);
+        return ResponseEntity.status(HttpStatus.OK).body(cart);
+    }
 
 
     // add a DELETE method to clear all products from the current users cart
