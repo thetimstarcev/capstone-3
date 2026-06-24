@@ -1,12 +1,10 @@
 package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.yearup.models.Profile;
 import org.yearup.models.User;
 import org.yearup.service.ProfileService;
@@ -19,8 +17,8 @@ import java.security.Principal;
 @PreAuthorize("hasRole('USER')")
 @CrossOrigin
 public class ProfileController {
-    private ProfileService profileService;
-    private UserService userService;
+    private final ProfileService profileService;
+    private final UserService userService;
 
     @Autowired
     public ProfileController(ProfileService profileService, UserService userService) {
@@ -34,5 +32,14 @@ public class ProfileController {
         User user = userService.getByUserName(userName);
         int userId = user.getId();
         return profileService.getProfileByUserId(userId).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping
+    public ResponseEntity<Profile> updateProfile(Principal principal, @RequestBody Profile profile){
+        String userName = principal.getName();
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();
+        Profile updatedProfile = profileService.updateProfile(userId,profile);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedProfile);
     }
 }

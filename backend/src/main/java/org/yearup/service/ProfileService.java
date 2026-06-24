@@ -21,4 +21,17 @@ public class ProfileService {
     public Optional<Profile> getProfileByUserId(int userId) {
         return profileRepository.findById(userId);
     }
+
+    public Profile updateProfile(int userId, Profile profile){
+        Profile existingProfile = profileRepository.findById(userId).orElseThrow();
+        existingProfile.setFirstName(profile.getFirstName());
+        existingProfile.setLastName(profile.getLastName());
+        existingProfile.setPhone(profile.getPhone());
+        existingProfile.setEmail(profile.getEmail());
+        existingProfile.setAddress(profile.getAddress());
+        existingProfile.setCity(profile.getCity());
+        existingProfile.setState(profile.getState());
+        existingProfile.setZip(profile.getZip());
+        return profileRepository.save(existingProfile);
+    }
 }
