@@ -1,5 +1,6 @@
 package org.yearup.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,7 @@ public class ShoppingCartController {
     private ShoppingCartService shoppingCartService;
     private UserService userService;
 
+    @Autowired
     public ShoppingCartController(ShoppingCartService shoppingCartService, UserService userService) {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
@@ -60,7 +62,6 @@ public class ShoppingCartController {
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
 
-
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart  - return the (now empty) cart so the front end can refresh it (200 OK)
     @DeleteMapping
@@ -72,6 +73,4 @@ public class ShoppingCartController {
         ShoppingCart cart = new ShoppingCart();
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
-
-
 }
