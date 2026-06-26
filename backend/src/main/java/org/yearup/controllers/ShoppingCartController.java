@@ -41,6 +41,14 @@ public class ShoppingCartController {
         return shoppingCartService.getByUserId(userId);
     }
 
+    /**
+     * Adds a product to the authenticated user's shopping cart.
+     * If the product already exists in the cart, increments its quantity.
+     *
+     * @param principal the authenticated user making the request
+     * @param id the product ID to add to the cart
+     * @return ResponseEntity with status 201 Created and the updated cart
+     */
     @PostMapping("/products/{id}")
     public ResponseEntity<ShoppingCart> addProduct(Principal principal, @PathVariable int id) {
         String userName = principal.getName();
@@ -50,9 +58,14 @@ public class ShoppingCartController {
         return ResponseEntity.status(HttpStatus.CREATED).body(cart);
     }
 
-    // add a PUT method to update an existing product in the cart - the url should be
-    // https://localhost:8080/cart/products/15  (15 is the productId to be updated)
-    // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
+    /**
+     * Updates the quantity of a product in the authenticated user's shopping cart.
+     *
+     * @param principal the authenticated user making the request
+     * @param id the product ID to update
+     * @param item the shopping cart item containing the new quantity
+     * @return ResponseEntity with status 200 OK and the updated cart
+     */
     @PutMapping("/products/{id}")
     public ResponseEntity<ShoppingCart> updateProduct(Principal principal, @PathVariable int id, @RequestBody ShoppingCartItem item) {
         String userName = principal.getName();
@@ -63,8 +76,12 @@ public class ShoppingCartController {
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
 
-    // add a DELETE method to clear all products from the current users cart
-    // https://localhost:8080/cart  - return the (now empty) cart so the front end can refresh it (200 OK)
+    /**
+     * Clears all items from the authenticated user's shopping cart.
+     *
+     * @param principal the authenticated user making the request
+     * @return ResponseEntity with status 200 OK and an empty cart
+     */
     @DeleteMapping
     public ResponseEntity<ShoppingCart> clearCart(Principal principal) {
         String userName = principal.getName();

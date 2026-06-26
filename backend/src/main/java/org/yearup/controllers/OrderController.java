@@ -29,6 +29,13 @@ public class OrderController {
         this.userService = userService;
     }
 
+    /**
+     * Creates a new order from the current user's shopping cart.
+     * Converts all items in the cart to order line items and clears the cart.
+     *
+     * @param principal the authenticated user making the request
+     * @return ResponseEntity with status 201 Created and the newly created order
+     */
     @PostMapping
     public ResponseEntity<Order> addOrder(Principal principal) {
         String userName = principal.getName();

@@ -39,6 +39,13 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    /**
+     * Updates an existing product with new information.
+     *
+     * @param productId the ID of the product to update
+     * @param product the updated product data
+     * @return the updated product
+     */
     public Product update(int productId, Product product) {
         Product existing = productRepository.findById(productId).orElseThrow();
         existing.setName(product.getName());

@@ -34,6 +34,13 @@ public class ProfileController {
         return profileService.getProfileByUserId(userId).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    /**
+     * Updates the profile information for the authenticated user.
+     *
+     * @param principal the authenticated user making the request
+     * @param profile the updated profile data
+     * @return ResponseEntity with status 200 OK and the updated profile
+     */
     @PutMapping
     public ResponseEntity<Profile> updateProfile(Principal principal, @RequestBody Profile profile){
         String userName = principal.getName();

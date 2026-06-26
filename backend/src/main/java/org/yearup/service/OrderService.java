@@ -29,6 +29,18 @@ public class OrderService {
         this.productRepository = productRepository;
     }
 
+    /**
+     * Processes checkout for a user by converting their shopping cart items into an order.
+     * This method is transactional to ensure data consistency.
+     *
+     * Creates an order with the user's profile information, converts all cart items
+     * to order line items, and clears the shopping cart.
+     *
+     * @param userId the ID of the user checking out
+     * @return the created Order object
+     * @throws ResponseStatusException with 404 status if user profile not found
+     * @throws ResponseStatusException with 400 status if shopping cart is empty
+     */
     @Transactional
     public Order checkout(int userId) {
         Profile profile = profileRepository.findById(userId).
