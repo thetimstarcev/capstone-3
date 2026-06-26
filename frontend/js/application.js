@@ -77,6 +77,17 @@ function clearCart()
     cartService.loadCartPage();
 }
 
+function filterVisibleProducts(query)
+{
+    const normalizedQuery = query.trim().toLowerCase();
+    const products = [...document.querySelectorAll(".product")];
+
+    products.forEach(product => {
+        const productText = product.innerText.toLowerCase();
+        product.classList.toggle("hidden", normalizedQuery && !productText.includes(normalizedQuery));
+    });
+}
+
 function setCategory(control)
 {
     productService.addCategoryFilter(control.value);

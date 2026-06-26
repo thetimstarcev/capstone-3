@@ -4,7 +4,7 @@ class TemplateBuilder
 {
     build(templateName, value, target, callback)
     {
-        axios.get(`templates/${templateName}.html`)
+        axios.get(`templates/${templateName}.html?v=${Date.now()}`)
             .then(response => {
                 try
                 {
@@ -28,7 +28,7 @@ class TemplateBuilder
 
     append(templateName, value, target)
     {
-        axios.get(`templates/${templateName}.html`)
+        axios.get(`templates/${templateName}.html?v=${Date.now()}`)
              .then(response => {
                  try
                  {

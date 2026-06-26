@@ -1,12 +1,15 @@
 {{#products}}
 <div class="product">
     <div>
-        <h4>{{name}}</h4>
         <div class="photo">
-            <img src="./images/products/{{imageUrl}}" alt=""
-                 onclick="showImageDetailForm(`{{name}}`,'/images/products/{{imageUrl}}')"
+            <img class="{{imageClass}}" src="{{imagePath}}" alt=""
+                 onerror="this.onerror=null;this.src='./images/logo.svg';this.classList.add('placeholder-image')"
+                 onclick="showImageDetailForm(`{{name}}`,'{{detailImagePath}}')"
             >
-          <h4 class="price">${{price}}</h4>
+        </div>
+        <div class="product-info">
+            <h4>{{name}}</h4>
+            <h4 class="price">${{price}}</h4>
         </div>
         <div>
             <p>{{description}}</p>

@@ -1,14 +1,19 @@
 
 {{#loggedin}}
 <div id="links">
-    <img src="/images/logo.svg" alt="recordshop logo">
+    <img src="images/logo.svg" alt="recordshop logo">
     <a href="#" onclick="loadHome()">Home</a>
     <a href="#" onclick="editProfile()">Profile</a>
     <a href="#" onclick="showCart()">View Cart</a>
 </div>
 
-<div>
-    Welcome&nbsp;<span style="font-weight: bold">{{username}}</span>&nbsp;|&nbsp;<a href="#" onclick="userService.logout();return false;">logout</a>
+<div class="search-pill">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input id="site-search" type="search" placeholder="Search music" oninput="filterVisibleProducts(this.value)">
+</div>
+
+<div class="user-area">
+    Welcome <strong>{{username}}</strong> | <a href="#" onclick="userService.logout();return false;">logout</a>
     <div class="cart" onclick="showCart()">
         <i class="fa-solid fa-cart-shopping"></i>
         <div id="cart-items">0</div>
@@ -17,11 +22,16 @@
 {{/loggedin}}
 {{#loggedout}}
 <div id="links">
-    <img src="/images/logo.svg" alt="recordshop logo">
+    <img src="images/logo.svg" alt="recordshop logo">
     <a href="#" onclick="loadHome()">Home</a>
 </div>
 
-<div>
+<div class="search-pill">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input id="site-search" type="search" placeholder="Search music" oninput="filterVisibleProducts(this.value)">
+</div>
+
+<div class="user-area">
     <a href="#"  onclick="showLoginForm();return false;">login</a>
 </div>
 {{/loggedout}}

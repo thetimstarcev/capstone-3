@@ -17,6 +17,7 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/cart")
 @PreAuthorize("hasRole('USER')")
+@CrossOrigin
 public class ShoppingCartController {
     // a shopping cart controller depends on the service layer
     private ShoppingCartService shoppingCartService;

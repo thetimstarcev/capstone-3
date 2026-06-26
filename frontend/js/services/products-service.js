@@ -97,12 +97,10 @@ class ProductService {
                  data.products = response.data;
 
                  data.products.forEach(product => {
-                     console.log(product)
-
-                     if(!this.hasPhoto(product.imageUrl))
-                     {
-                         product.imageUrl = "no-image.jpg";
-                     }
+                     const hasProductPhoto = this.hasPhoto(product.imageUrl);
+                     product.imagePath = hasProductPhoto ? `./images/products/${product.imageUrl}` : "./images/logo.svg";
+                     product.detailImagePath = hasProductPhoto ? `/images/products/${product.imageUrl}` : "/images/logo.svg";
+                     product.imageClass = hasProductPhoto ? "" : "placeholder-image";
                  })
 
                  templateBuilder.build('product', data, 'content', this.enableButtons);
@@ -134,6 +132,12 @@ class ProductService {
             buttons.forEach(button => {
                 button.classList.add("invisible")
             });
+        }
+
+        const search = document.getElementById("site-search");
+        if(search && search.value)
+        {
+            filterVisibleProducts(search.value);
         }
     }
 

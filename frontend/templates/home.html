@@ -14,7 +14,7 @@
         <input type="range" class="form-range" id="min-price" min="0" max="500" value="0" onchange="setMinPrice(this)">
     </div>
     <div>
-        <label for="max-price" class="form-label">Minimum Price: $ <span id="max-price-display">500</span></label>
+        <label for="max-price" class="form-label">Maximum Price: $ <span id="max-price-display">500</span></label>
         <input type="range" class="form-range" id="max-price" min="0" max="500" value="500" onchange="setMaxPrice(this)">
     </div>
 
@@ -38,4 +38,16 @@
     </div>
 
 </div>
-<div id="content" class="content"></div>
+<section class="catalog-panel">
+    <div class="catalog-toolbar">
+        <div>
+            <h1>Catalog</h1>
+            <p>Browse records, CDs, audio gear, and music essentials.</p>
+        </div>
+        <div class="view-tools" aria-hidden="true">
+            <button class="active" type="button" tabindex="-1"><i class="fa-solid fa-grip"></i></button>
+            <button type="button" tabindex="-1"><i class="fa-solid fa-list"></i></button>
+        </div>
+    </div>
+    <div id="content" class="content"></div>
+</section>
