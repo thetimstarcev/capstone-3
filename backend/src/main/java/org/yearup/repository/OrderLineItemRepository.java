@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import org.yearup.models.OrderLineItem;
 
 @Repository
-public interface OrderLineItemRepository extends JpaRepository<OrderLineItem,Integer> {
-
+public interface OrderLineItemRepository extends JpaRepository<OrderLineItem, Integer> {
 }

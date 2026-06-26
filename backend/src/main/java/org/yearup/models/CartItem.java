@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "shopping_cart")
-public class CartItem
-{
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_item_id")
@@ -20,43 +19,35 @@ public class CartItem
     @Column(name = "quantity")
     private int quantity = 1;
 
-    public int getCartItemId()
-    {
+    public int getCartItemId() {
         return cartItemId;
     }
 
-    public void setCartItemId(int cartItemId)
-    {
+    public void setCartItemId(int cartItemId) {
         this.cartItemId = cartItemId;
     }
 
-    public int getUserId()
-    {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId)
-    {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public int getProductId()
-    {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId)
-    {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
-    public int getQuantity()
-    {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity)
-    {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }

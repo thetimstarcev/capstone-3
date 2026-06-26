@@ -40,12 +40,12 @@ public class ProfileService {
      * Updates an existing user profile with new information.
      * Updates contact and address information.
      *
-     * @param userId the ID of the user whose profile to update
+     * @param userId  the ID of the user whose profile to update
      * @param profile the updated profile data
      * @return the updated profile
      * @throws ResponseStatusException with 404 status if profile not found
      */
-    public Profile updateProfile(int userId, Profile profile){
+    public Profile updateProfile(int userId, Profile profile) {
         Profile existingProfile = profileRepository.findById(userId).
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         existingProfile.setFirstName(profile.getFirstName());

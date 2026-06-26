@@ -42,7 +42,7 @@ public class CategoryService {
     /**
      * Updates an existing category.
      *
-     * @param categoryId the ID of the category to update
+     * @param categoryId      the ID of the category to update
      * @param updatedCategory the updated category data
      * @return Optional containing the updated category if found, otherwise empty
      */

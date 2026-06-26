@@ -43,7 +43,7 @@ public class ProductService {
      * Updates an existing product with new information.
      *
      * @param productId the ID of the product to update
-     * @param product the updated product data
+     * @param product   the updated product data
      * @return the updated product
      */
     public Product update(int productId, Product product) {

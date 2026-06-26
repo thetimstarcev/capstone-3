@@ -27,7 +27,7 @@ public class ProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<Profile> getProfile (Principal principal){
+    public ResponseEntity<Profile> getProfile(Principal principal) {
         String userName = principal.getName();
         User user = userService.getByUserName(userName);
         int userId = user.getId();
@@ -38,15 +38,15 @@ public class ProfileController {
      * Updates the profile information for the authenticated user.
      *
      * @param principal the authenticated user making the request
-     * @param profile the updated profile data
+     * @param profile   the updated profile data
      * @return ResponseEntity with status 200 OK and the updated profile
      */
     @PutMapping
-    public ResponseEntity<Profile> updateProfile(Principal principal, @RequestBody Profile profile){
+    public ResponseEntity<Profile> updateProfile(Principal principal, @RequestBody Profile profile) {
         String userName = principal.getName();
         User user = userService.getByUserName(userName);
         int userId = user.getId();
-        Profile updatedProfile = profileService.updateProfile(userId,profile);
+        Profile updatedProfile = profileService.updateProfile(userId, profile);
         return ResponseEntity.status(HttpStatus.OK).body(updatedProfile);
     }
 }

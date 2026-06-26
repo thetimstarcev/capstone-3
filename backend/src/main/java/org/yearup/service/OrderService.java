@@ -32,7 +32,7 @@ public class OrderService {
     /**
      * Processes checkout for a user by converting their shopping cart items into an order.
      * This method is transactional to ensure data consistency.
-     *
+     * <p>
      * Creates an order with the user's profile information, converts all cart items
      * to order line items, and clears the shopping cart.
      *

@@ -46,7 +46,7 @@ public class ShoppingCartController {
      * If the product already exists in the cart, increments its quantity.
      *
      * @param principal the authenticated user making the request
-     * @param id the product ID to add to the cart
+     * @param id        the product ID to add to the cart
      * @return ResponseEntity with status 201 Created and the updated cart
      */
     @PostMapping("/products/{id}")
@@ -62,8 +62,8 @@ public class ShoppingCartController {
      * Updates the quantity of a product in the authenticated user's shopping cart.
      *
      * @param principal the authenticated user making the request
-     * @param id the product ID to update
-     * @param item the shopping cart item containing the new quantity
+     * @param id        the product ID to update
+     * @param item      the shopping cart item containing the new quantity
      * @return ResponseEntity with status 200 OK and the updated cart
      */
     @PutMapping("/products/{id}")
