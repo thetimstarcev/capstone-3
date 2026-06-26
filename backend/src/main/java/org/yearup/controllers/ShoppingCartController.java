@@ -20,8 +20,8 @@ import java.security.Principal;
 @CrossOrigin
 public class ShoppingCartController {
     // a shopping cart controller depends on the service layer
-    private ShoppingCartService shoppingCartService;
-    private UserService userService;
+    private final ShoppingCartService shoppingCartService;
+    private final UserService userService;
 
     @Autowired
     public ShoppingCartController(ShoppingCartService shoppingCartService, UserService userService) {

@@ -18,7 +18,7 @@ import java.util.List;
 @CrossOrigin
 public class CategoriesController {
     private final CategoryService categoryService;
-    private ProductService productService;
+    private final ProductService productService;
 
     @Autowired
     public CategoriesController(CategoryService categoryService, ProductService productService) {

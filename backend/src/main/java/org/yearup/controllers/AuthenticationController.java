@@ -31,8 +31,8 @@ public class AuthenticationController {
 
     private final TokenProvider tokenProvider;
     private final AuthenticationManager authenticationManager;
-    private UserService userService;
-    private ProfileService profileService;
+    private final UserService userService;
+    private final ProfileService profileService;
 
     public AuthenticationController(TokenProvider tokenProvider, AuthenticationManager authenticationManager, UserService userService, ProfileService profileService) {
         this.tokenProvider = tokenProvider;

@@ -3,7 +3,6 @@ package org.yearup.service;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.server.ResponseStatusException;
 import org.yearup.models.CartItem;
 import org.yearup.models.Order;
@@ -15,7 +14,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@CrossOrigin
 public class OrderService {
     private final ProfileRepository profileRepository;
     private final ShoppingCartRepository shoppingCartRepository;
