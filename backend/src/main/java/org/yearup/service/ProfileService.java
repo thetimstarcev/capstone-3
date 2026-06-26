@@ -1,6 +1,8 @@
 package org.yearup.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import org.yearup.models.Profile;
 import org.yearup.repository.ProfileRepository;
 
@@ -23,7 +25,8 @@ public class ProfileService {
     }
 
     public Profile updateProfile(int userId, Profile profile){
-        Profile existingProfile = profileRepository.findById(userId).orElseThrow();
+        Profile existingProfile = profileRepository.findById(userId).
+                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         existingProfile.setFirstName(profile.getFirstName());
         existingProfile.setLastName(profile.getLastName());
         existingProfile.setPhone(profile.getPhone());
